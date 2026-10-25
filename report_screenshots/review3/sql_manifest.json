@@ -1,0 +1,541 @@
+[
+  {
+    "id": "A-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/A-01.png",
+    "sql": "SELECT CustomerID, FirstName, LastName, KYC_Status\nFROM Customer\nORDER BY CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:21:02.559Z"
+  },
+  {
+    "id": "A-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/A-02.png",
+    "sql": "SELECT AccountNo, CustomerID, AccountType, Balance\nFROM Account\nWHERE Status = 'Active'\nORDER BY Balance DESC, AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:24:44.644Z"
+  },
+  {
+    "id": "A-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/A-02.png",
+    "sql": "SELECT AccountNo, CustomerID, AccountType, Balance\nFROM Account\nWHERE Status = 'Active'\nORDER BY Balance DESC, AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:25:16.210Z"
+  },
+  {
+    "id": "A-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/A-03.png",
+    "sql": "SELECT DISTINCT AccountType\nFROM Account\nORDER BY AccountType;",
+    "note": "",
+    "captured_at": "2026-10-19T16:25:37.343Z"
+  },
+  {
+    "id": "A-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/A-04.png",
+    "sql": "SELECT AccountNo, Balance\nFROM Account\nWHERE Balance BETWEEN 50000 AND 250000\nORDER BY Balance, AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:25:39.633Z"
+  },
+  {
+    "id": "A-05",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/A-05.png",
+    "sql": "SELECT CustomerID, FirstName, LastName, KYC_Status\nFROM Customer\nWHERE KYC_Status IN ('Approved', 'Pending') AND FirstName LIKE 'A%'\nORDER BY FirstName, CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:25:42.548Z"
+  },
+  {
+    "id": "A-06",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/A-06.png",
+    "sql": "SELECT TransactionID, AccountNo, Amount, Remarks\nFROM Transaction_History\nWHERE Remarks IS NULL\nORDER BY TransactionID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:25:45.377Z"
+  },
+  {
+    "id": "B-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/B-01.png",
+    "sql": "SELECT KYC_Status, COUNT(*) AS customer_count\nFROM Customer\nGROUP BY KYC_Status\nORDER BY KYC_Status NULLS LAST;",
+    "note": "",
+    "captured_at": "2026-10-19T16:25:48.246Z"
+  },
+  {
+    "id": "B-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/B-02.png",
+    "sql": "SELECT AccountType, SUM(Balance) AS total_balance\nFROM Account\nGROUP BY AccountType\nORDER BY AccountType;",
+    "note": "",
+    "captured_at": "2026-10-19T16:25:51.009Z"
+  },
+  {
+    "id": "B-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/B-03.png",
+    "sql": "SELECT Role, ROUND(AVG(Salary), 2) AS average_salary,\n       MIN(Salary) AS minimum_salary, MAX(Salary) AS maximum_salary\nFROM Employee\nGROUP BY Role\nORDER BY Role;",
+    "note": "",
+    "captured_at": "2026-10-19T16:26:40.171Z"
+  },
+  {
+    "id": "B-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/B-04.png",
+    "sql": "SELECT BranchID, COUNT(*) AS active_account_count,\n       SUM(Balance) AS active_balance\nFROM Account\nWHERE Status = 'Active'\nGROUP BY BranchID\nHAVING SUM(Balance) >= 100000\nORDER BY active_balance DESC, BranchID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:26:42.910Z"
+  },
+  {
+    "id": "B-05",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/B-05.png",
+    "sql": "SELECT PaymentMode, COUNT(*) AS transaction_count,\n       SUM(Amount) AS gross_amount, ROUND(AVG(Amount), 2) AS average_amount\nFROM Transaction_History\nGROUP BY PaymentMode\nORDER BY gross_amount DESC, PaymentMode;",
+    "note": "",
+    "captured_at": "2026-10-19T16:26:46.652Z"
+  },
+  {
+    "id": "C-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/C-01.png",
+    "sql": "SELECT a.AccountNo, c.FirstName, c.LastName, b.BranchName, a.Balance\nFROM Account a\nINNER JOIN Customer c ON c.CustomerID = a.CustomerID\nINNER JOIN Branch b ON b.BranchID = a.BranchID\nORDER BY a.AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:26:49.433Z"
+  },
+  {
+    "id": "C-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/C-02.png",
+    "sql": "SELECT c.CustomerID, c.FirstName, l.LoanID, l.LoanType, l.Status\nFROM Customer c\nLEFT JOIN Loan l ON l.CustomerID = c.CustomerID\nORDER BY c.CustomerID, l.LoanID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:26:52.163Z"
+  },
+  {
+    "id": "C-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/C-03.png",
+    "sql": "SELECT b.BranchID, b.BranchName, l.LoanID, l.OutstandingBalance\nFROM Loan l\nRIGHT JOIN Branch b ON b.BranchID = l.BranchID\nORDER BY b.BranchID, l.LoanID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:26:54.837Z"
+  },
+  {
+    "id": "C-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/C-04.png",
+    "sql": "SELECT d.IFSC_Code AS directory_ifsc, d.BankName,\n       b.IFSC_Code AS branch_ifsc, b.BranchName\nFROM Bank_Directory d\nFULL OUTER JOIN Branch b ON b.IFSC_Code = d.IFSC_Code\nORDER BY COALESCE(d.IFSC_Code, b.IFSC_Code);",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:03.079Z"
+  },
+  {
+    "id": "C-05",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/C-05.png",
+    "sql": "SELECT a.CustomerID, a.AccountNo AS first_account, a.AccountType AS first_type,\n       other.AccountNo AS second_account, other.AccountType AS second_type\nFROM Account a\nJOIN Account other ON other.CustomerID = a.CustomerID\n                 AND a.AccountNo < other.AccountNo\nORDER BY a.CustomerID, a.AccountNo, other.AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:06.785Z"
+  },
+  {
+    "id": "C-06",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/C-06.png",
+    "sql": "SELECT b.BranchID, b.BranchName, product.AccountType,\n       COUNT(a.AccountNo) AS account_count\nFROM Branch b\nCROSS JOIN (SELECT DISTINCT AccountType FROM Account) product\nLEFT JOIN Account a ON a.BranchID = b.BranchID\n                   AND a.AccountType = product.AccountType\nGROUP BY b.BranchID, b.BranchName, product.AccountType\nORDER BY b.BranchID, product.AccountType;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:10.029Z"
+  },
+  {
+    "id": "D-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/D-01.png",
+    "sql": "SELECT AccountNo, Balance,\n       (SELECT ROUND(AVG(Balance), 2) FROM Account) AS bank_average_balance\nFROM Account\nORDER BY Balance DESC, AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:13.206Z"
+  },
+  {
+    "id": "D-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/D-02.png",
+    "sql": "SELECT CustomerID, FirstName, LastName\nFROM Customer\nWHERE CustomerID = (\n    SELECT CustomerID FROM Account\n    WHERE AccountType = 'Savings'\n    ORDER BY Balance DESC, AccountNo\n    LIMIT 1\n)\nORDER BY CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:15.999Z"
+  },
+  {
+    "id": "D-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/D-03.png",
+    "sql": "SELECT LoanID, CustomerID, LoanType, PrincipalAmount\nFROM Loan\nWHERE CustomerID IN (SELECT CustomerID FROM Account WHERE Status = 'Active')\n  AND PrincipalAmount > ANY (SELECT PrincipalAmount FROM Loan WHERE LoanType = 'Personal')\n  AND PrincipalAmount >= ALL (SELECT PrincipalAmount FROM Loan WHERE LoanType = 'Auto')\nORDER BY PrincipalAmount DESC, LoanID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:19.166Z"
+  },
+  {
+    "id": "D-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/D-04.png",
+    "sql": "SELECT c.CustomerID, c.FirstName, c.LastName\nFROM Customer c\nWHERE EXISTS (\n    SELECT 1 FROM Account a\n    WHERE a.CustomerID = c.CustomerID\n      AND a.Balance > (SELECT AVG(peer.Balance) FROM Account peer\n                       WHERE peer.BranchID = a.BranchID)\n)\nORDER BY c.CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:29.416Z"
+  },
+  {
+    "id": "D-05",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/D-05.png",
+    "sql": "SELECT c.CustomerID, c.FirstName, c.LastName\nFROM Customer c\nWHERE NOT EXISTS (SELECT 1 FROM Loan l WHERE l.CustomerID = c.CustomerID)\n  AND NOT EXISTS (SELECT 1 FROM Fixed_Deposit f WHERE f.CustomerID = c.CustomerID)\nORDER BY c.CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:32.165Z"
+  },
+  {
+    "id": "D-06",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/D-06.png",
+    "sql": "WITH narratives AS (\n    SELECT DISTINCT Remarks FROM Transaction_History WHERE Remarks IS NOT NULL\n)\nSELECT '1. Unsafe NOT IN (NULL poisoned)' AS demonstration,\n       COUNT(*) AS matching_narratives\nFROM narratives\nWHERE Remarks NOT IN (\n    SELECT Remarks FROM Transaction_History WHERE TransactionType = 'Withdrawal'\n)\nUNION ALL\nSELECT '2. Corrected NOT IN (NULL filtered)', COUNT(*)\nFROM narratives\nWHERE Remarks NOT IN (\n    SELECT Remarks FROM Transaction_History\n    WHERE TransactionType = 'Withdrawal' AND Remarks IS NOT NULL\n)\nORDER BY demonstration;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:35.554Z"
+  },
+  {
+    "id": "E-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/E-01.png",
+    "sql": "SELECT CustomerID FROM Account WHERE AccountType = 'Savings'\nUNION\nSELECT CustomerID FROM Loan\nORDER BY CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:38.357Z"
+  },
+  {
+    "id": "E-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/E-02.png",
+    "sql": "SELECT CustomerID, 'Account' AS product, AccountNo AS product_id FROM Account\nUNION ALL\nSELECT CustomerID, 'Fixed Deposit', FD_ID FROM Fixed_Deposit\nORDER BY CustomerID, product, product_id;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:41.207Z"
+  },
+  {
+    "id": "E-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/E-03.png",
+    "sql": "SELECT CustomerID FROM Account WHERE AccountType = 'Savings'\nINTERSECT\nSELECT CustomerID FROM Account WHERE AccountType = 'Current'\nORDER BY CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:27:43.968Z"
+  },
+  {
+    "id": "E-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/E-04.png",
+    "sql": "SELECT CustomerID FROM Account\nEXCEPT\nSELECT CustomerID FROM Loan\nORDER BY CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:00.479Z"
+  },
+  {
+    "id": "F-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/F-01.png",
+    "sql": "SELECT AccountNo, Balance,\n       CASE WHEN Balance >= 250000 THEN 'High'\n            WHEN Balance >= 50000 THEN 'Medium' ELSE 'Low' END AS balance_band,\n       ROUND(Balance * InterestRate / 1200.0, 2) AS estimated_monthly_interest\nFROM Account\nORDER BY AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:03.275Z"
+  },
+  {
+    "id": "F-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/F-02.png",
+    "sql": "SELECT TransactionID, AccountNo, COALESCE(Remarks, 'No remarks provided') AS narrative\nFROM Transaction_History\nORDER BY TransactionID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:06.117Z"
+  },
+  {
+    "id": "F-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/F-03.png",
+    "sql": "SELECT a.AccountNo, a.Balance,\n       COALESCE(SUM(t.Amount) FILTER (WHERE t.TransactionType = 'Withdrawal'), 0)\n           AS recorded_withdrawals,\n       ROUND(100.0 * COALESCE(SUM(t.Amount)\n           FILTER (WHERE t.TransactionType = 'Withdrawal'), 0)\n           / NULLIF(a.Balance, 0), 2) AS withdrawals_to_current_balance_pct\nFROM Account a\nLEFT JOIN Transaction_History t ON t.AccountNo = a.AccountNo\nGROUP BY a.AccountNo, a.Balance\nORDER BY a.AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:09.032Z"
+  },
+  {
+    "id": "F-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/F-04.png",
+    "sql": "SELECT a.AccountNo, UPPER(CONCAT(c.FirstName, ' ', c.LastName)) AS display_name,\n       a.OpeningDate,\n       AGE(CURRENT_DATE::timestamp, a.OpeningDate::timestamp) AS account_tenure,\n       EXTRACT(YEAR FROM AGE(CURRENT_DATE::timestamp, a.OpeningDate::timestamp))\n           AS completed_years\nFROM Account a\nJOIN Customer c ON c.CustomerID = a.CustomerID\nORDER BY a.AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:12.328Z"
+  },
+  {
+    "id": "G-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/G-01.png",
+    "sql": "SELECT AccountNo, BranchID, Balance,\n       RANK() OVER (PARTITION BY BranchID ORDER BY Balance DESC) AS balance_rank,\n       DENSE_RANK() OVER (PARTITION BY BranchID ORDER BY Balance DESC) AS dense_balance_rank\nFROM Account\nORDER BY BranchID, balance_rank, AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:15.157Z"
+  },
+  {
+    "id": "G-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/G-02.png",
+    "sql": "SELECT TransactionID, AccountNo, TransactionDate, Amount,\n       ROW_NUMBER() OVER (PARTITION BY AccountNo\n           ORDER BY TransactionDate DESC NULLS LAST, TransactionID DESC) AS recency_number\nFROM Transaction_History\nORDER BY AccountNo, recency_number;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:46.390Z"
+  },
+  {
+    "id": "G-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/G-03.png",
+    "sql": "SELECT TransactionID, AccountNo, TransactionDate, Amount,\n       SUM(Amount) OVER (PARTITION BY AccountNo\n           ORDER BY TransactionDate NULLS LAST, TransactionID\n           ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_gross_volume\nFROM Transaction_History\nORDER BY AccountNo, TransactionDate NULLS LAST, TransactionID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:49.275Z"
+  },
+  {
+    "id": "G-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/G-04.png",
+    "sql": "SELECT TransactionID, AccountNo, TransactionDate, Amount,\n       LAG(Amount) OVER account_events AS previous_amount,\n       LEAD(TransactionDate) OVER account_events AS next_transaction_date\nFROM Transaction_History\nWINDOW account_events AS (PARTITION BY AccountNo\n                         ORDER BY TransactionDate NULLS LAST, TransactionID)\nORDER BY AccountNo, TransactionDate NULLS LAST, TransactionID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:52.141Z"
+  },
+  {
+    "id": "CQ-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-01.png",
+    "sql": "SELECT l.LoanID, c.CustomerID, CONCAT(c.FirstName, ' ', c.LastName) AS borrower,\n       b.BranchName, l.OutstandingBalance AS defaulted_outstanding,\n       COUNT(r.PaymentID) FILTER (WHERE r.PaymentStatus = 'Failed') AS failed_attempts,\n       MAX(r.PaymentDate) FILTER (WHERE r.PaymentStatus = 'Success') AS last_successful_payment\nFROM Loan l\nJOIN Customer c ON c.CustomerID = l.CustomerID\nJOIN Branch b ON b.BranchID = l.BranchID\nLEFT JOIN Loan_Repayment r ON r.LoanID = l.LoanID\nWHERE l.Status = 'Defaulted'\nGROUP BY l.LoanID, c.CustomerID, c.FirstName, c.LastName, b.BranchID, b.BranchName\nORDER BY l.OutstandingBalance DESC, l.LoanID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:55.014Z"
+  },
+  {
+    "id": "CQ-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-02.png",
+    "sql": "WITH activity AS (\n    SELECT b.BranchID, b.BranchName, p.City,\n           COUNT(t.TransactionID) AS transaction_count,\n           COALESCE(SUM(t.Amount), 0) AS gross_volume\n    FROM Branch b\n    JOIN Postal_Directory p ON p.Pincode = b.Pincode\n    LEFT JOIN Account a ON a.BranchID = b.BranchID\n    LEFT JOIN Transaction_History t ON t.AccountNo = a.AccountNo\n        AND t.TransactionDate >= CURRENT_TIMESTAMP - INTERVAL '365 days'\n        AND t.TransactionDate <= CURRENT_TIMESTAMP\n    GROUP BY b.BranchID, b.BranchName, p.City\n), ranked AS (\n    SELECT activity.*, DENSE_RANK() OVER (ORDER BY transaction_count DESC) AS activity_rank\n    FROM activity\n)\nSELECT * FROM ranked WHERE activity_rank <= 3\nORDER BY activity_rank, gross_volume DESC, BranchID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:28:58.701Z"
+  },
+  {
+    "id": "CQ-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-03.png",
+    "sql": "WITH deposits AS (\n    SELECT CustomerID, COUNT(*) AS active_fd_count, SUM(Amount) AS fd_principal\n    FROM Fixed_Deposit WHERE Status = 'Active' GROUP BY CustomerID\n), accounts AS (\n    SELECT CustomerID, SUM(Balance) AS active_account_balance\n    FROM Account WHERE Status = 'Active' GROUP BY CustomerID\n)\nSELECT c.CustomerID, CONCAT(c.FirstName, ' ', c.LastName) AS customer_name,\n       c.Phone, d.active_fd_count, d.fd_principal, a.active_account_balance\nFROM Customer c\nJOIN deposits d ON d.CustomerID = c.CustomerID\nJOIN accounts a ON a.CustomerID = c.CustomerID\nWHERE c.KYC_Status = 'Approved'\n  AND NOT EXISTS (SELECT 1 FROM Loan l WHERE l.CustomerID = c.CustomerID)\nORDER BY d.fd_principal DESC, c.CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:29:01.610Z"
+  },
+  {
+    "id": "CQ-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-04.png",
+    "sql": "WITH daily AS (\n    SELECT t.TransactionDate::date AS transaction_day,\n           COUNT(*) AS event_count, COUNT(DISTINCT b.BranchID) AS contributing_branches,\n           SUM(t.Amount) AS gross_volume\n    FROM Transaction_History t\n    JOIN Account a ON a.AccountNo = t.AccountNo\n    JOIN Branch b ON b.BranchID = a.BranchID\n    WHERE t.TransactionDate IS NOT NULL\n    GROUP BY t.TransactionDate::date\n), ranked AS (\n    SELECT daily.*, DENSE_RANK() OVER (ORDER BY gross_volume DESC) AS volume_rank\n    FROM daily\n)\nSELECT * FROM ranked WHERE volume_rank <= 3\nORDER BY volume_rank, transaction_day;",
+    "note": "",
+    "captured_at": "2026-10-19T16:30:58.654Z"
+  },
+  {
+    "id": "CQ-05",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-05.png",
+    "sql": "WITH balances AS (\n    SELECT CustomerID, SUM(Balance) AS account_balance\n    FROM Account WHERE Status IN ('Active', 'Dormant', 'Frozen') GROUP BY CustomerID\n), deposits AS (\n    SELECT CustomerID, SUM(Amount) AS fd_principal\n    FROM Fixed_Deposit WHERE Status = 'Active' GROUP BY CustomerID\n), debt AS (\n    SELECT CustomerID, SUM(OutstandingBalance) AS loan_outstanding\n    FROM Loan WHERE Status IN ('Approved', 'Active', 'Defaulted') GROUP BY CustomerID\n)\nSELECT c.CustomerID, CONCAT(c.FirstName, ' ', c.LastName) AS customer_name,\n       COALESCE(a.account_balance, 0) AS account_balance,\n       COALESCE(f.fd_principal, 0) AS active_fd_principal,\n       COALESCE(l.loan_outstanding, 0) AS loan_outstanding,\n       COALESCE(a.account_balance, 0) + COALESCE(f.fd_principal, 0)\n           - COALESCE(l.loan_outstanding, 0) AS indicative_net_position\nFROM Customer c\nLEFT JOIN balances a ON a.CustomerID = c.CustomerID\nLEFT JOIN deposits f ON f.CustomerID = c.CustomerID\nLEFT JOIN debt l ON l.CustomerID = c.CustomerID\nORDER BY indicative_net_position DESC, c.CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:01.424Z"
+  },
+  {
+    "id": "CQ-06",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-06.png",
+    "sql": "WITH contact_accounts AS (\n    SELECT a.CustomerID, a.AccountNo, b.BranchName,\n           ROW_NUMBER() OVER (PARTITION BY a.CustomerID\n               ORDER BY a.OpeningDate, a.AccountNo) AS preference\n    FROM Account a\n    JOIN Branch b ON b.BranchID = a.BranchID\n    WHERE a.Status = 'Active'\n)\nSELECT f.FD_ID, c.CustomerID, CONCAT(c.FirstName, ' ', c.LastName) AS customer_name,\n       c.Phone, f.EndDate, CURRENT_DATE - f.EndDate AS days_since_maturity,\n       f.MaturityAmount, a.AccountNo AS suggested_contact_account,\n       a.BranchName AS suggested_contact_branch\nFROM Fixed_Deposit f\nJOIN Customer c ON c.CustomerID = f.CustomerID\nLEFT JOIN contact_accounts a ON a.CustomerID = c.CustomerID AND a.preference = 1\nWHERE f.Status = 'Active' AND f.EndDate <= CURRENT_DATE\nORDER BY f.EndDate, f.FD_ID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:04.333Z"
+  },
+  {
+    "id": "CQ-07",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-07.png",
+    "sql": "WITH staffing AS (\n    SELECT BranchID, COUNT(*) AS staff_count, SUM(Salary) AS monthly_payroll\n    FROM Employee GROUP BY BranchID\n), holdings AS (\n    SELECT BranchID, COUNT(DISTINCT CustomerID) AS customer_count,\n           SUM(Balance) AS deposit_balance\n    FROM Account WHERE Status IN ('Active', 'Dormant', 'Frozen') GROUP BY BranchID\n)\nSELECT b.BranchID, b.BranchName, p.City,\n       COALESCE(s.staff_count, 0) AS staff_count,\n       COALESCE(s.monthly_payroll, 0) AS monthly_payroll,\n       COALESCE(h.deposit_balance, 0) AS deposit_balance,\n       ROUND(COALESCE(h.customer_count, 0)::numeric / NULLIF(s.staff_count, 0), 2)\n           AS customers_per_employee,\n       ROUND(COALESCE(h.deposit_balance, 0) / NULLIF(s.monthly_payroll, 0), 2)\n           AS balance_to_monthly_payroll_ratio\nFROM Branch b\nJOIN Postal_Directory p ON p.Pincode = b.Pincode\nLEFT JOIN staffing s ON s.BranchID = b.BranchID\nLEFT JOIN holdings h ON h.BranchID = b.BranchID\nORDER BY customers_per_employee DESC NULLS LAST, b.BranchID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:07.134Z"
+  },
+  {
+    "id": "CQ-08",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-08.png",
+    "sql": "WITH exposure AS (\n    SELECT c.CustomerID, CONCAT(c.FirstName, ' ', c.LastName) AS customer_name,\n           d.BankName, COUNT(*) AS beneficiary_count,\n           SUM(b.MaxTransferLimit) AS configured_limit_sum\n    FROM Customer c\n    JOIN Beneficiary b ON b.CustomerID = c.CustomerID\n    JOIN Bank_Directory d ON d.IFSC_Code = b.IFSC_Code\n    GROUP BY c.CustomerID, c.FirstName, c.LastName, d.BankName\n)\nSELECT exposure.*,\n       DENSE_RANK() OVER (PARTITION BY BankName ORDER BY configured_limit_sum DESC)\n           AS limit_rank_within_bank\nFROM exposure\nORDER BY BankName, limit_rank_within_bank, CustomerID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:09.894Z"
+  },
+  {
+    "id": "CQ-09",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-09.png",
+    "sql": "SELECT l.LoanID, CONCAT(c.FirstName, ' ', c.LastName) AS borrower,\n       b.BranchName, l.Status AS loan_status, l.OutstandingBalance,\n       COALESCE(SUM(r.AmountPaid) FILTER (WHERE r.PaymentStatus = 'Success'), 0)\n           AS successful_collections,\n       COUNT(r.PaymentID) FILTER (WHERE r.PaymentStatus = 'Pending') AS pending_attempts,\n       COUNT(r.PaymentID) FILTER (WHERE r.PaymentStatus = 'Failed') AS failed_attempts,\n       MAX(r.PaymentDate) FILTER (WHERE r.PaymentStatus = 'Success') AS latest_collection\nFROM Loan l\nJOIN Customer c ON c.CustomerID = l.CustomerID\nJOIN Branch b ON b.BranchID = l.BranchID\nLEFT JOIN Loan_Repayment r ON r.LoanID = l.LoanID\nGROUP BY l.LoanID, c.CustomerID, c.FirstName, c.LastName, b.BranchID, b.BranchName\nORDER BY failed_attempts DESC, pending_attempts DESC, l.LoanID;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:12.971Z"
+  },
+  {
+    "id": "CQ-10",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CQ-10.png",
+    "sql": "WITH activity AS (\n    SELECT AccountNo, COUNT(*) AS historical_events, MAX(TransactionDate) AS last_event\n    FROM Transaction_History GROUP BY AccountNo\n)\nSELECT c.CustomerID, CONCAT(c.FirstName, ' ', c.LastName) AS customer_name,\n       c.KYC_Status, a.AccountNo, a.Status AS account_status, a.Balance,\n       b.BranchName, COALESCE(t.historical_events, 0) AS historical_events,\n       t.last_event, audit.ActionType AS latest_audit_action,\n       audit.Description AS latest_audit_description, audit.LogDate AS latest_audit_date\nFROM Customer c\nJOIN Account a ON a.CustomerID = c.CustomerID\nJOIN Branch b ON b.BranchID = a.BranchID\nLEFT JOIN activity t ON t.AccountNo = a.AccountNo\nLEFT JOIN LATERAL (\n    SELECT al.ActionType, al.Description, al.LogDate\n    FROM Audit_Log al\n    WHERE LOWER(al.TableName) = 'account' AND al.RecordID = a.AccountNo\n    ORDER BY al.LogDate DESC NULLS LAST, al.LogID DESC\n    LIMIT 1\n) audit ON TRUE\nWHERE c.KYC_Status IS DISTINCT FROM 'Approved'\n   OR a.Status IN ('Dormant', 'Frozen')\nORDER BY b.BranchID, c.CustomerID, a.AccountNo;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:16.252Z"
+  },
+  {
+    "id": "vw_customer_passbook",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/vw_customer_passbook.png",
+    "sql": "SELECT * FROM vw_customer_passbook LIMIT 12;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:34.249Z"
+  },
+  {
+    "id": "vw_branch_financial_summary",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/vw_branch_financial_summary.png",
+    "sql": "SELECT * FROM vw_branch_financial_summary LIMIT 12;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:37.085Z"
+  },
+  {
+    "id": "vw_active_vellore_accounts",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/vw_active_vellore_accounts.png",
+    "sql": "SELECT * FROM vw_active_vellore_accounts LIMIT 12;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:39.813Z"
+  },
+  {
+    "id": "fn_calculate_emi",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/fn_calculate_emi.png",
+    "sql": "SELECT fn_calculate_emi(2500000,8.50,240) AS compound_emi, fn_calculate_emi(12000,0,12) AS zero_rate_emi;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:42.947Z"
+  },
+  {
+    "id": "fn_customer_net_worth",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/fn_customer_net_worth.png",
+    "sql": "SELECT CustomerID, FirstName, fn_customer_net_worth(CustomerID) AS net_worth FROM Customer ORDER BY CustomerID LIMIT 8;",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:46.163Z"
+  },
+  {
+    "id": "RBAC",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/RBAC.png",
+    "sql": "SELECT role_name, has_table_privilege(role_name,'Account','SELECT') AS account_read, has_table_privilege(role_name,'Account','DELETE') AS account_delete, has_table_privilege(role_name,'vw_customer_passbook','SELECT') AS passbook_read FROM (VALUES ('bank_admin'),('branch_manager'),('bank_teller')) roles(role_name);",
+    "note": "",
+    "captured_at": "2026-10-19T16:31:49.050Z"
+  },
+  {
+    "id": "DDL",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/DDL.png",
+    "sql": "SELECT t.table_name, COUNT(c.column_name) AS columns, string_agg(c.column_name || ' ' || c.data_type, ', ' ORDER BY c.ordinal_position) AS installed_definition FROM information_schema.tables t JOIN information_schema.columns c ON c.table_schema=t.table_schema AND c.table_name=t.table_name WHERE t.table_schema='public' AND t.table_type='BASE TABLE' GROUP BY t.table_name ORDER BY t.table_name;",
+    "note": "",
+    "captured_at": "2026-10-19T16:32:19.485Z"
+  },
+  {
+    "id": "INDEX",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/INDEX.png",
+    "sql": "EXPLAIN (ANALYZE, BUFFERS) SELECT TransactionID, AccountNo, TransactionDate, Amount\nFROM public.Transaction_History\nWHERE AccountNo = 100001 AND TransactionDate >= CURRENT_DATE - INTERVAL '365 days'\nORDER BY TransactionDate;",
+    "note": "",
+    "captured_at": "2026-10-19T16:32:22.348Z"
+  },
+  {
+    "id": "TC-01",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-01.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false; v_constraint TEXT;\nBEGIN\n    BEGIN\n        INSERT INTO public.Customer SELECT * FROM public.Customer WHERE CustomerID = 1;\n    EXCEPTION WHEN others THEN\n        GET STACKED DIAGNOSTICS v_constraint = CONSTRAINT_NAME;\n        IF SQLSTATE <> '23505' OR v_constraint <> 'customer_pkey' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-01 PASS: Expected failure caught (duplicate customer PK)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-01 FAIL: duplicate PK accepted or fixture missing'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:16.153Z"
+  },
+  {
+    "id": "TC-02",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-02.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false; v_constraint TEXT;\nBEGIN\n    IF EXISTS (SELECT 1 FROM public.Customer WHERE CustomerID = -2147483648) THEN\n        RAISE EXCEPTION 'TC-02 fixture ID must be unused';\n    END IF;\n    BEGIN\n        UPDATE public.Account SET CustomerID = -2147483648 WHERE AccountNo = 100001;\n    EXCEPTION WHEN others THEN\n        GET STACKED DIAGNOSTICS v_constraint = CONSTRAINT_NAME;\n        IF SQLSTATE <> '23503' OR v_constraint <> 'account_customerid_fkey' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-02 PASS: Expected failure caught (missing customer FK)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-02 FAIL: invalid customer FK accepted'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:18.672Z"
+  },
+  {
+    "id": "TC-03",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-03.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false; v_constraint TEXT;\nBEGIN\n    IF EXISTS (SELECT 1 FROM public.Branch WHERE BranchID = -2147483648) THEN\n        RAISE EXCEPTION 'TC-03 fixture ID must be unused';\n    END IF;\n    BEGIN\n        UPDATE public.Loan SET BranchID = -2147483648 WHERE LoanID = 2001;\n    EXCEPTION WHEN others THEN\n        GET STACKED DIAGNOSTICS v_constraint = CONSTRAINT_NAME;\n        IF SQLSTATE <> '23503' OR v_constraint <> 'loan_branchid_fkey' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-03 PASS: Expected failure caught (missing branch FK)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-03 FAIL: invalid branch FK accepted'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:21.217Z"
+  },
+  {
+    "id": "TC-04",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-04.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false; v_constraint TEXT;\nBEGIN\n    BEGIN\n        UPDATE public.Customer SET Age = 17 WHERE CustomerID = 1;\n    EXCEPTION WHEN others THEN\n        GET STACKED DIAGNOSTICS v_constraint = CONSTRAINT_NAME;\n        IF SQLSTATE <> '23514' OR v_constraint <> 'customer_age_check' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-04 PASS: Expected failure caught (Age below 18)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-04 FAIL: underage customer accepted'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:23.777Z"
+  },
+  {
+    "id": "TC-05",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-05.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false; v_constraint TEXT;\nBEGIN\n    BEGIN\n        UPDATE public.Account SET Balance = -1 WHERE AccountNo = 100001;\n    EXCEPTION WHEN others THEN\n        GET STACKED DIAGNOSTICS v_constraint = CONSTRAINT_NAME;\n        IF SQLSTATE <> '23514' OR v_constraint <> 'account_balance_check' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-05 PASS: Expected failure caught (negative balance)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-05 FAIL: negative balance accepted'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:26.661Z"
+  },
+  {
+    "id": "TC-06",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-06.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false; v_constraint TEXT;\nBEGIN\n    BEGIN\n        UPDATE public.Customer SET Gender = 'Invalid' WHERE CustomerID = 1;\n    EXCEPTION WHEN others THEN\n        GET STACKED DIAGNOSTICS v_constraint = CONSTRAINT_NAME;\n        IF SQLSTATE <> '23514' OR v_constraint <> 'customer_gender_check' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-06 PASS: Expected failure caught (invalid Gender)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-06 FAIL: invalid gender accepted'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:29.116Z"
+  },
+  {
+    "id": "TC-07",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-07.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false; v_constraint TEXT;\nBEGIN\n    BEGIN\n        UPDATE public.Customer SET PAN_Number = (SELECT PAN_Number FROM public.Customer WHERE CustomerID = 1)\n        WHERE CustomerID = 2;\n    EXCEPTION WHEN others THEN\n        GET STACKED DIAGNOSTICS v_constraint = CONSTRAINT_NAME;\n        IF SQLSTATE <> '23505' OR v_constraint <> 'customer_pan_number_key' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-07 PASS: Expected failure caught (duplicate PAN)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-07 FAIL: duplicate PAN accepted'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:31.517Z"
+  },
+  {
+    "id": "TC-08",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-08.png",
+    "sql": "DO $$\nDECLARE v_before BIGINT; v_balance NUMERIC;\nBEGIN\n    SELECT COUNT(*) INTO v_before FROM public.Audit_Log;\n    SELECT Balance INTO STRICT v_balance FROM public.Account WHERE AccountNo = 100001;\n    BEGIN\n        UPDATE public.Account SET Balance = Balance + 1 WHERE AccountNo = 100001;\n        IF (SELECT COUNT(*) FROM public.Audit_Log) <> v_before + 1 OR NOT EXISTS (\n            SELECT 1 FROM public.Audit_Log WHERE TableName = 'Account' AND RecordID = 100001\n              AND ActionType = 'BALANCE_UPDATE'\n              AND Description = FORMAT('AccountNo=%s; old balance=%s; new balance=%s',\n                                       100001, v_balance::numeric(15,2), (v_balance+1)::numeric(15,2))\n        ) THEN RAISE EXCEPTION 'TC-08 FAIL: balance credit audit missing or incorrect'; END IF;\n        RAISE EXCEPTION 'Undo successful audit test' USING ERRCODE = 'Z0001';\n    EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL;\n    END;\n    IF (SELECT COUNT(*) FROM public.Audit_Log) <> v_before\n       OR (SELECT Balance FROM public.Account WHERE AccountNo = 100001) <> v_balance THEN\n        RAISE EXCEPTION 'TC-08 FAIL: test rollback leaked changes';\n    END IF;\n    RAISE NOTICE 'TC-08 PASS: credit audit records correct balances; test changes rolled back';\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:34.090Z"
+  },
+  {
+    "id": "TC-09",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-09.png",
+    "sql": "DO $$\nDECLARE v_before BIGINT; v_balance NUMERIC;\nBEGIN\n    SELECT COUNT(*) INTO v_before FROM public.Audit_Log;\n    SELECT Balance INTO STRICT v_balance FROM public.Account WHERE AccountNo = 100003;\n    IF v_balance < 0.01 THEN RAISE EXCEPTION 'TC-09 requires at least one paise'; END IF;\n    BEGIN\n        UPDATE public.Account SET Balance = Balance - 0.01 WHERE AccountNo = 100003;\n        IF (SELECT COUNT(*) FROM public.Audit_Log) <> v_before + 1 OR NOT EXISTS (\n            SELECT 1 FROM public.Audit_Log WHERE TableName = 'Account' AND RecordID = 100003\n              AND ActionType = 'BALANCE_UPDATE'\n              AND Description = FORMAT('AccountNo=%s; old balance=%s; new balance=%s',\n                                       100003, v_balance::numeric(15,2), (v_balance-0.01)::numeric(15,2))\n        ) THEN RAISE EXCEPTION 'TC-09 FAIL: debit audit missing or incorrect'; END IF;\n        UPDATE public.Account SET Balance = Balance WHERE AccountNo = 100003;\n        IF (SELECT COUNT(*) FROM public.Audit_Log) <> v_before + 1 THEN\n            RAISE EXCEPTION 'TC-09 FAIL: no-op update produced an audit';\n        END IF;\n        RAISE EXCEPTION 'Undo successful debit test' USING ERRCODE = 'Z0001';\n    EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL;\n    END;\n    IF (SELECT COUNT(*) FROM public.Audit_Log) <> v_before\n       OR (SELECT Balance FROM public.Account WHERE AccountNo = 100003) <> v_balance THEN\n        RAISE EXCEPTION 'TC-09 FAIL: test rollback leaked changes';\n    END IF;\n    RAISE NOTICE 'TC-09 PASS: debit audited once, no-op ignored, changes rolled back';\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:50.595Z"
+  },
+  {
+    "id": "TC-10",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-10.png",
+    "sql": "DO $$\nDECLARE\n    v_caught BOOLEAN := false; v_sender NUMERIC; v_receiver NUMERIC;\n    v_history BIGINT; v_audits BIGINT;\nBEGIN\n    SELECT Balance INTO STRICT v_sender FROM public.Account WHERE AccountNo = 100001;\n    SELECT Balance INTO STRICT v_receiver FROM public.Account WHERE AccountNo = 100003;\n    SELECT COUNT(*) INTO v_history FROM public.Transaction_History;\n    SELECT COUNT(*) INTO v_audits FROM public.Audit_Log;\n    BEGIN\n        CALL public.sp_transfer_funds(100001, 100003, v_sender + 1, 'Internal', 'TC-10 must fail');\n    EXCEPTION WHEN others THEN\n        IF SQLSTATE <> '22023' OR SQLERRM NOT LIKE 'Insufficient balance%' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-10 PASS: Expected failure caught (insufficient balance)';\n    END;\n    IF NOT v_caught OR (SELECT Balance FROM public.Account WHERE AccountNo = 100001) <> v_sender\n       OR (SELECT Balance FROM public.Account WHERE AccountNo = 100003) <> v_receiver\n       OR (SELECT COUNT(*) FROM public.Transaction_History) <> v_history\n       OR (SELECT COUNT(*) FROM public.Audit_Log) <> v_audits THEN\n        RAISE EXCEPTION 'TC-10 FAIL: rejected transfer changed balances/history/audit';\n    END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:53.096Z"
+  },
+  {
+    "id": "TC-11",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-11.png",
+    "sql": "DO $$\nDECLARE v_count BIGINT;\nBEGIN\n    SELECT COUNT(*) INTO v_count FROM public.vw_customer_passbook;\n    IF v_count = 0 OR v_count <> (\n        SELECT COUNT(*) FROM public.Customer c\n        JOIN public.Account a ON a.CustomerID = c.CustomerID\n        JOIN public.Branch b ON b.BranchID = a.BranchID\n        JOIN public.Transaction_History t ON t.AccountNo = a.AccountNo\n    ) OR EXISTS (SELECT 1 FROM public.vw_customer_passbook WHERE Remarks IS NULL) THEN\n        RAISE EXCEPTION 'TC-11 FAIL: passbook empty, incorrect count, or unreadable NULL remarks';\n    END IF;\n    RAISE NOTICE 'TC-11 PASS: passbook retrieves % joined transaction rows', v_count;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:55.642Z"
+  },
+  {
+    "id": "TC-12",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-12.png",
+    "sql": "DO $$\nDECLARE v_count BIGINT;\nBEGIN\n    SELECT COUNT(*) INTO v_count FROM public.vw_branch_financial_summary;\n    IF v_count = 0 OR v_count <> (SELECT COUNT(*) FROM public.Branch)\n       OR EXISTS (\n           SELECT 1 FROM public.vw_branch_financial_summary s\n           WHERE s.total_active_accounts <> (SELECT COUNT(*) FROM public.Account a\n                                             WHERE a.BranchID=s.BranchID AND a.Status='Active')\n              OR s.total_loan_outstanding <> COALESCE((SELECT SUM(l.OutstandingBalance)\n                                             FROM public.Loan l WHERE l.BranchID=s.BranchID), 0)\n       ) OR (SELECT SUM(total_fd_maturity_amounts) FROM public.vw_branch_financial_summary)\n            IS DISTINCT FROM (SELECT COALESCE(SUM(f.MaturityAmount), 0) FROM public.Fixed_Deposit f\n                WHERE f.Status='Active' AND EXISTS (SELECT 1 FROM public.Account a WHERE a.CustomerID=f.CustomerID)) THEN\n        RAISE EXCEPTION 'TC-12 FAIL: branch summary counts or financial totals do not reconcile';\n    END IF;\n    RAISE NOTICE 'TC-12 PASS: all % branches reconcile with independent product totals', v_count;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:33:58.226Z"
+  },
+  {
+    "id": "TC-13",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-13.png",
+    "sql": "DO $$\nDECLARE v_emi NUMERIC;\nBEGIN\n    SELECT public.fn_calculate_emi(2500000, 8.50, 240) INTO v_emi;\n    IF v_emi IS DISTINCT FROM 21695.58\n       OR public.fn_calculate_emi(12000, 0, 12) IS DISTINCT FROM 1000.00\n       OR EXISTS (SELECT 1 FROM public.Loan\n                  WHERE EMI_Amount IS DISTINCT FROM public.fn_calculate_emi(PrincipalAmount,InterestRate,TenureMonths)) THEN\n        RAISE EXCEPTION 'TC-13 FAIL: EMI function disagrees with reference/generated values';\n    END IF;\n    RAISE NOTICE 'TC-13 PASS: reference EMI=%, zero-rate and all stored EMIs agree', v_emi;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:34:01.113Z"
+  },
+  {
+    "id": "TC-14",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-14.png",
+    "sql": "DO $$\nDECLARE v_customer RECORD; v_expected NUMERIC; v_actual NUMERIC; v_count INT := 0;\nBEGIN\n    FOR v_customer IN SELECT CustomerID FROM public.Customer ORDER BY CustomerID LOOP\n        SELECT COALESCE(SUM(component), 0) INTO v_expected FROM (\n            SELECT Balance AS component FROM public.Account WHERE CustomerID=v_customer.CustomerID\n            UNION ALL\n            SELECT Amount FROM public.Fixed_Deposit WHERE CustomerID=v_customer.CustomerID AND Status='Active'\n            UNION ALL\n            SELECT -OutstandingBalance FROM public.Loan WHERE CustomerID=v_customer.CustomerID\n        ) products;\n        SELECT public.fn_customer_net_worth(v_customer.CustomerID) INTO v_actual;\n        IF v_actual IS DISTINCT FROM v_expected THEN\n            RAISE EXCEPTION 'TC-14 FAIL: customer % expected %, got %', v_customer.CustomerID, v_expected, v_actual;\n        END IF;\n        v_count := v_count + 1;\n    END LOOP;\n    IF v_count = 0 THEN RAISE EXCEPTION 'TC-14 FAIL: customer fixtures missing'; END IF;\n    RAISE NOTICE 'TC-14 PASS: net worth reconciles for % customers, including absent-product NULL handling', v_count;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:34:03.711Z"
+  },
+  {
+    "id": "TC-15",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/TC-15.png",
+    "sql": "DO $$\nDECLARE v_caught BOOLEAN := false;\nBEGIN\n    BEGIN\n        EXECUTE 'UPDATE public.Customer SET Age = ''not-an-integer'' WHERE CustomerID = 1';\n    EXCEPTION WHEN others THEN\n        IF SQLSTATE <> '22P02' THEN RAISE; END IF;\n        v_caught := true;\n        RAISE NOTICE 'TC-15 PASS: Expected failure caught (invalid integer input)';\n    END;\n    IF NOT v_caught THEN RAISE EXCEPTION 'TC-15 FAIL: integer column accepted a string'; END IF;\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:34:06.239Z"
+  },
+  {
+    "id": "trg_audit_account_changes",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/trg_audit_account_changes.png",
+    "sql": "DO $$ DECLARE v numeric; info text; BEGIN BEGIN UPDATE Account SET Balance=Balance+1 WHERE AccountNo=100001; SELECT Description INTO info FROM Audit_Log ORDER BY LogID DESC LIMIT 1; RAISE NOTICE '%',info; RAISE EXCEPTION 'Undo demonstration' USING ERRCODE='Z0001'; EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL; END; RAISE NOTICE 'PASS: demonstration completed; changes rolled back'; END $$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:35:34.782Z"
+  },
+  {
+    "id": "trg_loan_repayment",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/trg_loan_repayment.png",
+    "sql": "DO $$ DECLARE v numeric; info text; BEGIN BEGIN INSERT INTO Loan_Repayment(LoanID,AmountPaid,PaymentMode,PaymentStatus) VALUES(2001,10,'UPI','Success'); SELECT OutstandingBalance INTO v FROM Loan WHERE LoanID=2001; RAISE NOTICE 'Loan 2001 outstanding after repayment: %',v; RAISE EXCEPTION 'Undo demonstration' USING ERRCODE='Z0001'; EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL; END; RAISE NOTICE 'PASS: demonstration completed; changes rolled back'; END $$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:35:37.574Z"
+  },
+  {
+    "id": "sp_pay_loan_emi",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/sp_pay_loan_emi.png",
+    "sql": "DO $$ DECLARE v numeric; info text; BEGIN BEGIN CALL sp_pay_loan_emi(1,2001,100001); SELECT OutstandingBalance INTO v FROM Loan WHERE LoanID=2001; RAISE NOTICE 'Loan 2001 outstanding after EMI: %',v; RAISE EXCEPTION 'Undo demonstration' USING ERRCODE='Z0001'; EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL; END; RAISE NOTICE 'PASS: demonstration completed; changes rolled back'; END $$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:35:39.921Z"
+  },
+  {
+    "id": "sp_batch_credit_savings_interest",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/sp_batch_credit_savings_interest.png",
+    "sql": "DO $$ DECLARE v numeric; info text; BEGIN BEGIN CALL sp_batch_credit_savings_interest(); SELECT COUNT(*) INTO v FROM Transaction_History WHERE xmin=pg_current_xact_id()::text::xid; RAISE NOTICE 'New postings in this demonstration: %',v; RAISE EXCEPTION 'Undo demonstration' USING ERRCODE='Z0001'; EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL; END; RAISE NOTICE 'PASS: demonstration completed; changes rolled back'; END $$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:35:42.614Z"
+  },
+  {
+    "id": "sp_batch_mature_fixed_deposits",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/sp_batch_mature_fixed_deposits.png",
+    "sql": "DO $$ DECLARE v numeric; info text; BEGIN BEGIN CALL sp_batch_mature_fixed_deposits(); SELECT COUNT(*) INTO v FROM Transaction_History WHERE xmin=pg_current_xact_id()::text::xid; RAISE NOTICE 'New postings in this demonstration: %',v; RAISE EXCEPTION 'Undo demonstration' USING ERRCODE='Z0001'; EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL; END; RAISE NOTICE 'PASS: demonstration completed; changes rolled back'; END $$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:35:44.962Z"
+  },
+  {
+    "id": "RBAC-PROOF",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/RBAC-PROOF.png",
+    "sql": "DO $$\nDECLARE v_denied BOOLEAN := false;\nBEGIN\n    SET LOCAL ROLE bank_teller;\n    BEGIN\n        DELETE FROM public.Account WHERE false;\n    EXCEPTION WHEN insufficient_privilege THEN\n        v_denied := true;\n        RAISE NOTICE 'PASS: bank_teller DELETE denied (SQLSTATE %)', SQLSTATE;\n    END;\n    RESET ROLE;\n    IF NOT v_denied THEN RAISE EXCEPTION 'Least privilege failed: teller can DELETE Account'; END IF;\n    IF HAS_TABLE_PRIVILEGE('bank_teller', 'public.Account', 'UPDATE')\n       OR HAS_TABLE_PRIVILEGE('bank_teller', 'public.Account', 'SELECT')\n       OR HAS_FUNCTION_PRIVILEGE('bank_teller', 'public.fn_customer_net_worth(integer)', 'EXECUTE') THEN\n        RAISE EXCEPTION 'Teller inherited unintended base-table or routine access';\n    END IF;\n    SET LOCAL ROLE bank_teller;\n    PERFORM * FROM public.vw_customer_passbook LIMIT 1;\n    RESET ROLE;\n    RAISE NOTICE 'PASS: teller can read passbook while base Account access remains denied';\nEND;\n$$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:35:47.754Z"
+  },
+  {
+    "id": "CONCURRENCY",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/CONCURRENCY.png",
+    "sql": "DO $$ BEGIN PERFORM AccountNo FROM public.Account WHERE AccountNo=100001 FOR UPDATE NOWAIT; RAISE EXCEPTION 'Expected a conflicting row lock'; EXCEPTION WHEN lock_not_available THEN RAISE NOTICE 'PASS: second writer blocked by first writer (55P03)'; END $$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:36:19.555Z"
+  },
+  {
+    "id": "SAVEPOINT",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/sql/SAVEPOINT.png",
+    "sql": "DO $$\nDECLARE original numeric; restored numeric;\nBEGIN\n SELECT Balance INTO original FROM Account WHERE AccountNo=100001;\n BEGIN\n  UPDATE Account SET Balance=Balance+1 WHERE AccountNo=100001;\n  RAISE EXCEPTION 'Rollback inner changes' USING ERRCODE='Z0001';\n EXCEPTION WHEN SQLSTATE 'Z0001' THEN NULL; END;\n SELECT Balance INTO restored FROM Account WHERE AccountNo=100001;\n IF original IS DISTINCT FROM restored THEN RAISE EXCEPTION 'Rollback failed'; END IF;\n RAISE NOTICE 'PASS: before %, after rollback %',original,restored;\nEND $$;",
+    "note": "",
+    "captured_at": "2026-10-19T16:36:42.542Z"
+  }
+]

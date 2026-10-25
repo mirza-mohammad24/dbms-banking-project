@@ -1,0 +1,59 @@
+flowchart TB
+subgraph group0[" "]
+direction LR
+Branch["Branch"]:::entity
+Branch_a0(["BranchID"]):::attribute
+class Branch_a0 primary;
+Branch --- Branch_a0
+Branch_a1(["BranchName"]):::attribute
+Branch --- Branch_a1
+Branch_a2(["Address"]):::attribute
+Branch --- Branch_a2
+Branch_a3(["Pincode (FK)"]):::attribute
+Branch --- Branch_a3
+Branch_a4(["IFSC_Code"]):::attribute
+Branch --- Branch_a4
+Branch_a5(["ContactPhone"]):::attribute
+Branch --- Branch_a5
+end
+style group0 fill:#ffffff,stroke:#ffffff;
+subgraph group1[" "]
+direction LR
+Employee["Employee"]:::entity
+Employee_a0(["EmployeeID"]):::attribute
+class Employee_a0 primary;
+Employee --- Employee_a0
+Employee_a1(["BranchID (FK)"]):::attribute
+Employee --- Employee_a1
+Employee_a2(["FirstName"]):::attribute
+Employee --- Employee_a2
+Employee_a3(["LastName"]):::attribute
+Employee --- Employee_a3
+Employee_a4(["Email"]):::attribute
+Employee --- Employee_a4
+Employee_a5(["Role"]):::attribute
+Employee --- Employee_a5
+Employee_a6(["Salary"]):::attribute
+Employee --- Employee_a6
+Employee_a7(["HireDate"]):::attribute
+Employee --- Employee_a7
+end
+style group1 fill:#ffffff,stroke:#ffffff;
+subgraph group2[" "]
+direction LR
+Postal_Directory["Postal_Directory"]:::entity
+Postal_Directory_a0(["Pincode"]):::attribute
+class Postal_Directory_a0 primary;
+Postal_Directory --- Postal_Directory_a0
+Postal_Directory_a1(["City"]):::attribute
+Postal_Directory --- Postal_Directory_a1
+Postal_Directory_a2(["State"]):::attribute
+Postal_Directory --- Postal_Directory_a2
+end
+style group2 fill:#ffffff,stroke:#ffffff;
+
+classDef entity fill:#e8f0fc,stroke:#163865,stroke-width:2px,color:#12223b,font-weight:bold;
+classDef relationship fill:#fff8e7,stroke:#8c6720,stroke-width:1.7px,color:#3e3216;
+classDef attribute fill:#ffffff,stroke:#4b617a,stroke-width:1.4px,color:#172b43;
+classDef derived fill:#ffffff,stroke:#4b617a,stroke-width:1.6px,stroke-dasharray:6 4,color:#172b43;
+linkStyle default stroke:#52657c,stroke-width:1.5px;

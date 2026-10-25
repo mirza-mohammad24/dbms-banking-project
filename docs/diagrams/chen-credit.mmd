@@ -1,0 +1,75 @@
+flowchart TB
+subgraph group0[" "]
+direction LR
+Loan["Loan"]:::entity
+Loan_a0(["LoanID"]):::attribute
+class Loan_a0 primary;
+Loan --- Loan_a0
+Loan_a1(["CustomerID (FK)"]):::attribute
+Loan --- Loan_a1
+Loan_a2(["BranchID (FK)"]):::attribute
+Loan --- Loan_a2
+Loan_a3(["LoanType"]):::attribute
+Loan --- Loan_a3
+Loan_a4(["PrincipalAmount"]):::attribute
+Loan --- Loan_a4
+Loan_a5(["InterestRate"]):::attribute
+Loan --- Loan_a5
+Loan_a6(["TenureMonths"]):::attribute
+Loan --- Loan_a6
+Loan_a7(["EMI_Amount"]):::derived
+Loan --- Loan_a7
+Loan_a8(["OutstandingBalance"]):::attribute
+Loan --- Loan_a8
+Loan_a9(["IssueDate"]):::attribute
+Loan --- Loan_a9
+Loan_a10(["Status"]):::attribute
+Loan --- Loan_a10
+end
+style group0 fill:#ffffff,stroke:#ffffff;
+subgraph group1[" "]
+direction LR
+Loan_Repayment["Loan_Repayment"]:::entity
+Loan_Repayment_a0(["PaymentID"]):::attribute
+class Loan_Repayment_a0 primary;
+Loan_Repayment --- Loan_Repayment_a0
+Loan_Repayment_a1(["LoanID (FK)"]):::attribute
+Loan_Repayment --- Loan_Repayment_a1
+Loan_Repayment_a2(["AmountPaid"]):::attribute
+Loan_Repayment --- Loan_Repayment_a2
+Loan_Repayment_a3(["PaymentMode"]):::attribute
+Loan_Repayment --- Loan_Repayment_a3
+Loan_Repayment_a4(["PaymentStatus"]):::attribute
+Loan_Repayment --- Loan_Repayment_a4
+Loan_Repayment_a5(["PaymentDate"]):::attribute
+Loan_Repayment --- Loan_Repayment_a5
+end
+style group1 fill:#ffffff,stroke:#ffffff;
+subgraph group2[" "]
+direction LR
+Fixed_Deposit["Fixed_Deposit"]:::entity
+Fixed_Deposit_a0(["FD_ID"]):::attribute
+class Fixed_Deposit_a0 primary;
+Fixed_Deposit --- Fixed_Deposit_a0
+Fixed_Deposit_a1(["CustomerID (FK)"]):::attribute
+Fixed_Deposit --- Fixed_Deposit_a1
+Fixed_Deposit_a2(["Amount"]):::attribute
+Fixed_Deposit --- Fixed_Deposit_a2
+Fixed_Deposit_a3(["InterestRate"]):::attribute
+Fixed_Deposit --- Fixed_Deposit_a3
+Fixed_Deposit_a4(["StartDate"]):::attribute
+Fixed_Deposit --- Fixed_Deposit_a4
+Fixed_Deposit_a5(["EndDate"]):::attribute
+Fixed_Deposit --- Fixed_Deposit_a5
+Fixed_Deposit_a6(["MaturityAmount"]):::derived
+Fixed_Deposit --- Fixed_Deposit_a6
+Fixed_Deposit_a7(["Status"]):::attribute
+Fixed_Deposit --- Fixed_Deposit_a7
+end
+style group2 fill:#ffffff,stroke:#ffffff;
+
+classDef entity fill:#e8f0fc,stroke:#163865,stroke-width:2px,color:#12223b,font-weight:bold;
+classDef relationship fill:#fff8e7,stroke:#8c6720,stroke-width:1.7px,color:#3e3216;
+classDef attribute fill:#ffffff,stroke:#4b617a,stroke-width:1.4px,color:#172b43;
+classDef derived fill:#ffffff,stroke:#4b617a,stroke-width:1.6px,stroke-dasharray:6 4,color:#172b43;
+linkStyle default stroke:#52657c,stroke-width:1.5px;

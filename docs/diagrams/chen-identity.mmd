@@ -1,0 +1,75 @@
+flowchart TB
+subgraph group0[" "]
+direction LR
+Customer["Customer"]:::entity
+Customer_a0(["CustomerID"]):::attribute
+class Customer_a0 primary;
+Customer --- Customer_a0
+Customer_a1(["FirstName"]):::attribute
+Customer --- Customer_a1
+Customer_a2(["LastName"]):::attribute
+Customer --- Customer_a2
+Customer_a3(["Gender"]):::attribute
+Customer --- Customer_a3
+Customer_a4(["Age"]):::attribute
+Customer --- Customer_a4
+Customer_a5(["Address"]):::attribute
+Customer --- Customer_a5
+Customer_a6(["Phone"]):::attribute
+Customer --- Customer_a6
+Customer_a7(["Email"]):::attribute
+Customer --- Customer_a7
+Customer_a8(["PAN_Number"]):::attribute
+Customer --- Customer_a8
+Customer_a9(["KYC_Status"]):::attribute
+Customer --- Customer_a9
+end
+style group0 fill:#ffffff,stroke:#ffffff;
+subgraph group1[" "]
+direction LR
+Account["Account"]:::entity
+Account_a0(["AccountNo"]):::attribute
+class Account_a0 primary;
+Account --- Account_a0
+Account_a1(["CustomerID (FK)"]):::attribute
+Account --- Account_a1
+Account_a2(["BranchID (FK)"]):::attribute
+Account --- Account_a2
+Account_a3(["AccountType"]):::attribute
+Account --- Account_a3
+Account_a4(["Balance"]):::attribute
+Account --- Account_a4
+Account_a5(["InterestRate"]):::attribute
+Account --- Account_a5
+Account_a6(["OpeningDate"]):::attribute
+Account --- Account_a6
+Account_a7(["Status"]):::attribute
+Account --- Account_a7
+end
+style group1 fill:#ffffff,stroke:#ffffff;
+subgraph group2[" "]
+direction LR
+Transaction_History["Transaction_History"]:::entity
+Transaction_History_a0(["TransactionID"]):::attribute
+class Transaction_History_a0 primary;
+Transaction_History --- Transaction_History_a0
+Transaction_History_a1(["AccountNo (FK)"]):::attribute
+Transaction_History --- Transaction_History_a1
+Transaction_History_a2(["Amount"]):::attribute
+Transaction_History --- Transaction_History_a2
+Transaction_History_a3(["TransactionType"]):::attribute
+Transaction_History --- Transaction_History_a3
+Transaction_History_a4(["PaymentMode"]):::attribute
+Transaction_History --- Transaction_History_a4
+Transaction_History_a5(["Remarks"]):::attribute
+Transaction_History --- Transaction_History_a5
+Transaction_History_a6(["TransactionDate"]):::attribute
+Transaction_History --- Transaction_History_a6
+end
+style group2 fill:#ffffff,stroke:#ffffff;
+
+classDef entity fill:#e8f0fc,stroke:#163865,stroke-width:2px,color:#12223b,font-weight:bold;
+classDef relationship fill:#fff8e7,stroke:#8c6720,stroke-width:1.7px,color:#3e3216;
+classDef attribute fill:#ffffff,stroke:#4b617a,stroke-width:1.4px,color:#172b43;
+classDef derived fill:#ffffff,stroke:#4b617a,stroke-width:1.6px,stroke-dasharray:6 4,color:#172b43;
+linkStyle default stroke:#52657c,stroke-width:1.5px;

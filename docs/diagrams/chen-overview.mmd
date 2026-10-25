@@ -1,0 +1,56 @@
+flowchart TB
+Postal_Directory["Postal_Directory"]:::entity
+Bank_Directory["Bank_Directory"]:::entity
+Branch["Branch"]:::entity
+Customer["Customer"]:::entity
+Account["Account"]:::entity
+Transaction_History["Transaction_History"]:::entity
+Loan["Loan"]:::entity
+Loan_Repayment["Loan_Repayment"]:::entity
+Beneficiary["Beneficiary"]:::entity
+Fixed_Deposit["Fixed_Deposit"]:::entity
+Employee["Employee"]:::entity
+Audit_Log["Audit_Log"]:::entity
+r0{"Locates"}:::relationship
+Postal_Directory ---|"1"| r0
+r0 ---|"N"| Branch
+r1{"Owns"}:::relationship
+Customer ---|"1"| r1
+r1 ---|"N"| Account
+r2{"Maintains"}:::relationship
+Branch ---|"1"| r2
+r2 ---|"N"| Account
+r3{"Records"}:::relationship
+Account ---|"1"| r3
+r3 ---|"N"| Transaction_History
+r4{"Borrows"}:::relationship
+Customer ---|"1"| r4
+r4 ---|"N"| Loan
+r5{"Issues"}:::relationship
+Branch ---|"1"| r5
+r5 ---|"N"| Loan
+r6{"Receives"}:::relationship
+Loan ---|"1"| r6
+r6 ---|"N"| Loan_Repayment
+r7{"Registers"}:::relationship
+Customer ---|"1"| r7
+r7 ---|"N"| Beneficiary
+r8{"Resolves bank"}:::relationship
+Bank_Directory ---|"1"| r8
+r8 ---|"N"| Beneficiary
+r9{"Invests in"}:::relationship
+Customer ---|"1"| r9
+r9 ---|"N"| Fixed_Deposit
+r10{"Employs"}:::relationship
+Branch ---|"1"| r10
+r10 ---|"N"| Employee
+EMI_Amount(["EMI_Amount"]):::derived
+Loan --- EMI_Amount
+MaturityAmount(["MaturityAmount"]):::derived
+Fixed_Deposit --- MaturityAmount
+
+classDef entity fill:#e8f0fc,stroke:#163865,stroke-width:2px,color:#12223b,font-weight:bold;
+classDef relationship fill:#fff8e7,stroke:#8c6720,stroke-width:1.7px,color:#3e3216;
+classDef attribute fill:#ffffff,stroke:#4b617a,stroke-width:1.4px,color:#172b43;
+classDef derived fill:#ffffff,stroke:#4b617a,stroke-width:1.6px,stroke-dasharray:6 4,color:#172b43;
+linkStyle default stroke:#52657c,stroke-width:1.5px;

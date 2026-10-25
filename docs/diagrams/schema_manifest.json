@@ -1,0 +1,582 @@
+{
+  "tables": {
+    "Postal_Directory": [
+      {
+        "name": "Pincode",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "City",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "State",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Bank_Directory": [
+      {
+        "name": "IFSC_Code",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "BankName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Branch": [
+      {
+        "name": "BranchID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "BranchName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Address",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Pincode",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "IFSC_Code",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "ContactPhone",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Customer": [
+      {
+        "name": "CustomerID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "FirstName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "LastName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Gender",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Age",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Address",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Phone",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Email",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "PAN_Number",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "KYC_Status",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Account": [
+      {
+        "name": "AccountNo",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "CustomerID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "BranchID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "AccountType",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Balance",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "InterestRate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "OpeningDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Status",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Transaction_History": [
+      {
+        "name": "TransactionID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "AccountNo",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "Amount",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "TransactionType",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "PaymentMode",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Remarks",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "TransactionDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Loan": [
+      {
+        "name": "LoanID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "CustomerID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "BranchID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "LoanType",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "PrincipalAmount",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "InterestRate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "TenureMonths",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "EMI_Amount",
+        "primary": false,
+        "foreign": false,
+        "derived": true
+      },
+      {
+        "name": "OutstandingBalance",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "IssueDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Status",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Loan_Repayment": [
+      {
+        "name": "PaymentID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "LoanID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "AmountPaid",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "PaymentMode",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "PaymentStatus",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "PaymentDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Beneficiary": [
+      {
+        "name": "BeneficiaryID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "CustomerID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "BeneficiaryName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "LinkedAccountNo",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "IFSC_Code",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "MaxTransferLimit",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Fixed_Deposit": [
+      {
+        "name": "FD_ID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "CustomerID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "Amount",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "InterestRate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "StartDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "EndDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "MaturityAmount",
+        "primary": false,
+        "foreign": false,
+        "derived": true
+      },
+      {
+        "name": "Status",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Employee": [
+      {
+        "name": "EmployeeID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "BranchID",
+        "primary": false,
+        "foreign": true,
+        "derived": false
+      },
+      {
+        "name": "FirstName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "LastName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Email",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Role",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Salary",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "HireDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ],
+    "Audit_Log": [
+      {
+        "name": "LogID",
+        "primary": true,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "TableName",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "RecordID",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "ActionType",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "Description",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      },
+      {
+        "name": "LogDate",
+        "primary": false,
+        "foreign": false,
+        "derived": false
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "parent": "Postal_Directory",
+      "child": "Branch",
+      "foreign_key": "Pincode",
+      "parent_key": "Pincode"
+    },
+    {
+      "parent": "Customer",
+      "child": "Account",
+      "foreign_key": "CustomerID",
+      "parent_key": "CustomerID"
+    },
+    {
+      "parent": "Branch",
+      "child": "Account",
+      "foreign_key": "BranchID",
+      "parent_key": "BranchID"
+    },
+    {
+      "parent": "Account",
+      "child": "Transaction_History",
+      "foreign_key": "AccountNo",
+      "parent_key": "AccountNo"
+    },
+    {
+      "parent": "Customer",
+      "child": "Loan",
+      "foreign_key": "CustomerID",
+      "parent_key": "CustomerID"
+    },
+    {
+      "parent": "Branch",
+      "child": "Loan",
+      "foreign_key": "BranchID",
+      "parent_key": "BranchID"
+    },
+    {
+      "parent": "Loan",
+      "child": "Loan_Repayment",
+      "foreign_key": "LoanID",
+      "parent_key": "LoanID"
+    },
+    {
+      "parent": "Customer",
+      "child": "Beneficiary",
+      "foreign_key": "CustomerID",
+      "parent_key": "CustomerID"
+    },
+    {
+      "parent": "Bank_Directory",
+      "child": "Beneficiary",
+      "foreign_key": "IFSC_Code",
+      "parent_key": "IFSC_Code"
+    },
+    {
+      "parent": "Customer",
+      "child": "Fixed_Deposit",
+      "foreign_key": "CustomerID",
+      "parent_key": "CustomerID"
+    },
+    {
+      "parent": "Branch",
+      "child": "Employee",
+      "foreign_key": "BranchID",
+      "parent_key": "BranchID"
+    }
+  ]
+}

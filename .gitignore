@@ -1,3 +1,7 @@
+.env
+.env.example
+.env.local
+
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -8,3 +12,9 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local report evidence snapshots and rendered quality-check intermediates
+.report_work/
+
+# Temporary local Mermaid browser preview
+frontend/public/report-diagrams/

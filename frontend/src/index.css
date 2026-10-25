@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --chart-grid: #e2e8f0;
+  --chart-tick: #64748b;
+  --chart-surface: #ffffff;
+  --chart-text: #334155;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --chart-grid: #334155;
+  --chart-tick: #94a3b8;
+  --chart-surface: #0f172a;
+  --chart-text: #e2e8f0;
+}
+
+@layer base {
+  body {
+    @apply m-0 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  }
+}

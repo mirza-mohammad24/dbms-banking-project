@@ -1,0 +1,53 @@
+flowchart TB
+subgraph group0[" "]
+direction LR
+Beneficiary["Beneficiary"]:::entity
+Beneficiary_a0(["BeneficiaryID"]):::attribute
+class Beneficiary_a0 primary;
+Beneficiary --- Beneficiary_a0
+Beneficiary_a1(["CustomerID (FK)"]):::attribute
+Beneficiary --- Beneficiary_a1
+Beneficiary_a2(["BeneficiaryName"]):::attribute
+Beneficiary --- Beneficiary_a2
+Beneficiary_a3(["LinkedAccountNo"]):::attribute
+Beneficiary --- Beneficiary_a3
+Beneficiary_a4(["IFSC_Code (FK)"]):::attribute
+Beneficiary --- Beneficiary_a4
+Beneficiary_a5(["MaxTransferLimit"]):::attribute
+Beneficiary --- Beneficiary_a5
+end
+style group0 fill:#ffffff,stroke:#ffffff;
+subgraph group1[" "]
+direction LR
+Bank_Directory["Bank_Directory"]:::entity
+Bank_Directory_a0(["IFSC_Code"]):::attribute
+class Bank_Directory_a0 primary;
+Bank_Directory --- Bank_Directory_a0
+Bank_Directory_a1(["BankName"]):::attribute
+Bank_Directory --- Bank_Directory_a1
+end
+style group1 fill:#ffffff,stroke:#ffffff;
+subgraph group2[" "]
+direction LR
+Audit_Log["Audit_Log"]:::entity
+Audit_Log_a0(["LogID"]):::attribute
+class Audit_Log_a0 primary;
+Audit_Log --- Audit_Log_a0
+Audit_Log_a1(["TableName"]):::attribute
+Audit_Log --- Audit_Log_a1
+Audit_Log_a2(["RecordID"]):::attribute
+Audit_Log --- Audit_Log_a2
+Audit_Log_a3(["ActionType"]):::attribute
+Audit_Log --- Audit_Log_a3
+Audit_Log_a4(["Description"]):::attribute
+Audit_Log --- Audit_Log_a4
+Audit_Log_a5(["LogDate"]):::attribute
+Audit_Log --- Audit_Log_a5
+end
+style group2 fill:#ffffff,stroke:#ffffff;
+
+classDef entity fill:#e8f0fc,stroke:#163865,stroke-width:2px,color:#12223b,font-weight:bold;
+classDef relationship fill:#fff8e7,stroke:#8c6720,stroke-width:1.7px,color:#3e3216;
+classDef attribute fill:#ffffff,stroke:#4b617a,stroke-width:1.4px,color:#172b43;
+classDef derived fill:#ffffff,stroke:#4b617a,stroke-width:1.6px,stroke-dasharray:6 4,color:#172b43;
+linkStyle default stroke:#52657c,stroke-width:1.5px;

@@ -5,6 +5,17 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "faker>=40.43.0",
+    "fastapi>=0.146.0",
+    "pandas>=3.0.5",
     "psycopg2-binary>=2.9.13",
+    "pydantic>=2.14.1",
+    "python-docx>=1.2.0",
     "streamlit>=1.64.0",
+    "uvicorn>=0.53.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
 ]

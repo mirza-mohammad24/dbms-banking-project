@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Core Banking Chen ER diagrams</title>
+<style>
+body{font:16px Arial,sans-serif;color:#142a43;background:#edf2f8;margin:0}
+header{padding:26px 34px;background:white;border-bottom:1px solid #ced7e3}
+h1{font-size:25px;margin:0 0 9px}p{max-width:1050px;line-height:1.5}
+main{padding:20px 34px}section{background:white;padding:24px;margin-bottom:25px;border:1px solid #d3deeb;border-radius:10px}
+button{background:#185abd;color:white;border:0;border-radius:5px;padding:11px 18px;cursor:pointer}
+.diagram{overflow:auto;text-align:center;padding:14px}.diagram svg{max-width:100%;height:auto}
+.status{font-size:14px;color:#405a78}h2{font-size:20px}
+</style></head><body>
+<header><h1>Core Banking Entity Relationship Model</h1><p>Chen notation rendered from Mermaid flowcharts. The overview contains the twelve actual tables and eleven declared foreign-key relationships. Attribute panels show every stored column.</p><p id="status" role="status">Rendering diagrams…</p></header><main id="panels"></main>
+<script type="module">
+import mermaid from './vendor/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:false,htmlLabels:false,look:'classic',securityLevel:'loose',theme:'base',themeVariables:{fontFamily:'Arial',fontSize:'20px',lineColor:'#52657c',background:'#ffffff'},flowchart:{htmlLabels:false,useMaxWidth:false,curve:'linear',wrappingWidth:360,nodeSpacing:32,rankSpacing:45,padding:16}});
+const data=await fetch('./diagrams.json').then(r=>r.json());
+const status=document.getElementById('status');
+async function savePng(panel,svg){
+  const rect=svg.viewBox.baseVal,scale=3;
+  const source=new XMLSerializer().serializeToString(svg);
+  const url=URL.createObjectURL(new Blob([source],{type:'image/svg+xml;charset=utf-8'}));
+  const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});
+  const canvas=document.createElement('canvas');canvas.width=Math.ceil(rect.width*scale);canvas.height=Math.ceil(rect.height*scale);
+  const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);URL.revokeObjectURL(url);
+  const png=canvas.toDataURL('image/png');
+  let a=document.getElementById('export-'+panel.id);
+  if(!a){a=document.createElement('a');a.id='export-'+panel.id;buttonArea(panel.id).append(a)}
+  a.download=panel.id+'.png';a.href=png;a.textContent='Save '+panel.id+'.png';a.style.marginLeft='18px';
+  a.click();
+  status.textContent='Downloaded '+panel.id+'.png. Dimensions: '+canvas.width+' × '+canvas.height;
+}
+function buttonArea(id){return document.getElementById('section-'+id)}
+for(const panel of data){
+  const section=document.createElement('section'),heading=document.createElement('h2'),note=document.createElement('p'),button=document.createElement('button'),holder=document.createElement('div');
+  heading.textContent=panel.title;note.textContent=panel.note;button.textContent='Download '+panel.id+' PNG';holder.className='diagram';
+  section.id='section-'+panel.id;section.append(heading,note,button,holder);document.getElementById('panels').append(section);
+  const {svg}=await mermaid.render(panel.id,panel.mermaid);holder.innerHTML=svg;
+  const element=holder.querySelector('svg');
+  element.querySelectorAll('g.node.primary text').forEach(text=>text.style.textDecoration='underline');
+  // Mermaid stadium nodes establish the attribute layout. Replace their
+  // outline with true SVG ellipses to obtain Chen ovals (not flowchart pills).
+  element.querySelectorAll('g.node.attribute,g.node.derived').forEach(node=>{
+    const shape=node.querySelector(':scope > .label-container')||node.querySelector(':scope > rect, :scope > path');if(!shape)return;
+    const ellipse=document.createElementNS('http://www.w3.org/2000/svg','ellipse');
+    const bounds=shape.getBBox();
+    ellipse.setAttribute('cx',bounds.x+bounds.width/2);ellipse.setAttribute('cy',bounds.y+bounds.height/2);ellipse.setAttribute('rx',bounds.width/2);ellipse.setAttribute('ry',bounds.height*.65);ellipse.setAttribute('style',shape.getAttribute('style')||shape.querySelector('path')?.getAttribute('style')||'');ellipse.setAttribute('class','label-container');shape.replaceWith(ellipse);
+  });
+  button.onclick=()=>savePng(panel,element).catch(error=>{status.textContent='Export error: '+error.message});
+}
+status.textContent='Ready: 5 diagrams rendered. Download each PNG to include the complete model.';
+</script></body></html>

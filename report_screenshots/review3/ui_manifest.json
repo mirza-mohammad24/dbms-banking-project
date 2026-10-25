@@ -1,0 +1,98 @@
+[
+  {
+    "id": "login",
+    "name": "Smart Login and Identity Switcher",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/login.png",
+    "captured_at": "2026-10-19T16:32:11.148Z"
+  },
+  {
+    "id": "customer-overview",
+    "name": "Portfolio Overview",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/customer-overview.png",
+    "captured_at": "2026-10-19T16:32:48.478Z"
+  },
+  {
+    "id": "customer-accounts",
+    "name": "My Accounts and Passbook",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/customer-accounts.png",
+    "captured_at": "2026-10-19T16:32:52.318Z"
+  },
+  {
+    "id": "customer-transfers",
+    "name": "Fund Transfers and Beneficiaries",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/customer-transfers.png",
+    "captured_at": "2026-10-19T16:33:40.528Z"
+  },
+  {
+    "id": "customer-loans",
+    "name": "Loans and EMI Center",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/customer-loans.png",
+    "captured_at": "2026-10-19T16:33:40.834Z"
+  },
+  {
+    "id": "customer-fds",
+    "name": "Fixed Deposit Vault",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/customer-fds.png",
+    "captured_at": "2026-10-19T16:33:41.120Z"
+  },
+  {
+    "id": "customer-profile",
+    "name": "Profile and KYC Details",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/customer-profile.png",
+    "captured_at": "2026-10-19T16:33:41.406Z"
+  },
+  {
+    "id": "admin-analytics",
+    "name": "Executive Analytics and Views",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-analytics.png",
+    "captured_at": "2026-10-19T16:35:01.508Z"
+  },
+  {
+    "id": "admin-customers",
+    "name": "Customer 360 and KYC Directory",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-customers.png",
+    "captured_at": "2026-10-19T16:35:01.901Z"
+  },
+  {
+    "id": "admin-accounts",
+    "name": "Account Management Desk",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-accounts.png",
+    "captured_at": "2026-10-19T16:35:02.234Z"
+  },
+  {
+    "id": "admin-loans",
+    "name": "Loan Origination and Portfolio",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-loans.png",
+    "captured_at": "2026-10-19T16:35:07.323Z"
+  },
+  {
+    "id": "admin-fds",
+    "name": "Fixed Deposit Book",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-fds.png",
+    "captured_at": "2026-10-19T16:35:07.630Z"
+  },
+  {
+    "id": "admin-infrastructure",
+    "name": "Branches Staff and Lookup Directories",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-infrastructure.png",
+    "captured_at": "2026-10-19T16:35:07.919Z"
+  },
+  {
+    "id": "admin-batch",
+    "name": "Batch Cursors and Live Trigger Audit",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-batch.png",
+    "captured_at": "2026-10-19T16:35:08.278Z"
+  },
+  {
+    "id": "admin-audit-detail",
+    "name": "Live Audit Trail Detail",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/admin-audit-detail.png",
+    "captured_at": "2026-10-19T16:35:17.913Z"
+  },
+  {
+    "id": "customer-passbook-detail",
+    "name": "Passbook Statement Detail",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/ui/customer-passbook-detail.png",
+    "captured_at": "2026-10-19T16:37:46.648Z"
+  }
+]

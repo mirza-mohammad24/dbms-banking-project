@@ -1,0 +1,44 @@
+[
+  {
+    "id": "TRANSFER-SUCCESS",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/supplemental/TRANSFER-SUCCESS.png",
+    "sql": "-- Executed: CALL sp_transfer_funds(100001,100003,1000,'UPI','Report transfer demonstration');\r\n-- Actual committed balances saved immediately after the procedure CALL.\r\nSELECT b.AccountNo,b.Balance AS balance_before,s.Balance AS balance_after,\r\n       s.Balance-b.Balance AS balance_change,t.Amount,t.Remarks\r\nFROM report_evidence.account_before b\r\nJOIN report_evidence.transfer_after s ON s.AccountNo=b.AccountNo\r\nJOIN Transaction_History t ON t.AccountNo=b.AccountNo\r\nWHERE b.phase='transfer' AND t.Remarks LIKE '%Report transfer demonstration'\r\nORDER BY b.AccountNo;\r\n",
+    "database": "banking_report_demo",
+    "captured_at": "2026-10-20T00:16:44.591Z"
+  },
+  {
+    "id": "TRANSFER-HISTORY",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/supplemental/TRANSFER-HISTORY.png",
+    "sql": "-- The committed transfer creates one debit and one credit history event.\r\nSELECT t.TransactionID,t.AccountNo,t.Amount,t.Remarks,s.balance_audit\r\nFROM Transaction_History t\r\nJOIN report_evidence.transfer_after s ON s.AccountNo=t.AccountNo\r\nWHERE t.Remarks LIKE '%Report transfer demonstration'\r\nORDER BY TransactionID;\r\n",
+    "database": "banking_report_demo",
+    "captured_at": "2026-10-20T00:16:58.977Z"
+  },
+  {
+    "id": "CURSOR-INTEREST",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/supplemental/CURSOR-INTEREST.png",
+    "sql": "-- Executed: CALL sp_batch_credit_savings_interest();\r\n-- New eligible Savings account in banking_report_demo; rate is 6 percent annually.\r\nSELECT a.AccountNo,b.Balance AS balance_before,a.Balance AS balance_after,\r\n       ROUND(b.Balance*a.InterestRate/1200,2) AS calculated_interest,\r\n       t.Amount AS posted_interest,t.Remarks,\r\n       (a.Balance-b.Balance=t.Amount) AS balance_verified\r\nFROM Account a JOIN report_evidence.account_before b\r\n  ON b.AccountNo=a.AccountNo AND b.phase='interest'\r\nJOIN Transaction_History t ON t.AccountNo=a.AccountNo\r\nWHERE a.AccountNo=900001 AND t.Remarks='Monthly Interest Credit';\r\n",
+    "database": "banking_report_demo",
+    "captured_at": "2026-10-20T00:17:13.874Z"
+  },
+  {
+    "id": "CURSOR-MATURITY",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/supplemental/CURSOR-MATURITY.png",
+    "sql": "-- Executed: CALL sp_batch_mature_fixed_deposits();\r\n-- Dedicated matured FD fixture in banking_report_demo.\r\nSELECT f.FD_ID,b.Status AS status_before,f.Status AS status_after,\r\n       f.MaturityAmount AS payout,b.Balance AS balance_before,\r\n       a.Balance AS balance_after,l.ActionType AS audit_event\r\nFROM Fixed_Deposit f JOIN report_evidence.fd_before b ON b.FD_ID=f.FD_ID\r\nJOIN Account a ON a.AccountNo=b.AccountNo\r\nJOIN Transaction_History t ON t.AccountNo=a.AccountNo\r\n  AND t.Remarks='FD Maturity Credit: 900001'\r\nJOIN Audit_Log l ON l.RecordID=f.FD_ID AND l.TableName='Fixed_Deposit'\r\n  AND l.ActionType='FD_MATURED'\r\nWHERE f.FD_ID=900001;\r\n",
+    "database": "banking_report_demo",
+    "captured_at": "2026-10-20T00:17:52.157Z"
+  },
+  {
+    "id": "INDEX-WITHOUT",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/supplemental/INDEX-WITHOUT.png",
+    "sql": "-- banking_report_demo: named index absent for the baseline.\r\nEXPLAIN (ANALYZE, BUFFERS)\r\nSELECT TransactionID,AccountNo,TransactionDate,Amount\r\nFROM public.Transaction_History\r\nWHERE AccountNo=100001\r\n  AND TransactionDate>=CURRENT_DATE-INTERVAL '365 days'\r\nORDER BY TransactionDate;\r\n",
+    "database": "banking_report_demo",
+    "captured_at": "2026-10-20T00:18:12.577Z"
+  },
+  {
+    "id": "INDEX-WITH",
+    "path": "D:/TOY PROJECTS/dbms-banking-project/report_screenshots/review3/supplemental/INDEX-WITH.png",
+    "sql": "-- banking_report_demo: idx_txn_account_date restored.\r\nEXPLAIN (ANALYZE, BUFFERS)\r\nSELECT TransactionID,AccountNo,TransactionDate,Amount\r\nFROM public.Transaction_History\r\nWHERE AccountNo=100001\r\n  AND TransactionDate>=CURRENT_DATE-INTERVAL '365 days'\r\nORDER BY TransactionDate;\r\n",
+    "database": "banking_report_demo",
+    "captured_at": "2026-10-20T00:18:52.410Z"
+  }
+]
