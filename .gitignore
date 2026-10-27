@@ -332,3 +332,6 @@ wheels/
 
 # Temporary local Mermaid browser preview
 frontend/public/report-diagrams/
+
+# Portable database migration bundles (local data and restore artifacts)
+migration_bundle/
